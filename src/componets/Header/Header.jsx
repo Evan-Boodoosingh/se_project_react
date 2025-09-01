@@ -3,12 +3,18 @@ import avatar from '../../assets/avatar.svg';
 import './Header.css';
 
 function Header() {
+const now = new Date();
+const dateStr = now.toLocaleDateString("default", {
+  month: "long",
+  day: "numeric",
+});
+
   return (
     <header className="header">
       <img src={logo} alt="Logo" className="header__logo" />
      <p className="header__place">
-       <time className="header__datetime" dateTime="2025-09-01">
-         September 1
+       <time className="header__datetime" dateTime={now}>
+         {dateStr}
        </time>
        , New York
      </p>
