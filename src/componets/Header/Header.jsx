@@ -1,5 +1,6 @@
 import logo from '../../assets/logo.svg';
 import avatar from '../../assets/avatar.svg';
+import './Header.css';
 
 function Header() {
   return (
@@ -11,7 +12,7 @@ function Header() {
        </time>
        , New York
      </p>
-     <button className="header__button">+ Add clothes</button>
+     <button className="header__btn">+ Add clothes</button>
      <p className="header__username">Terrence Tegegne</p>
      <img src={avatar} alt="Avatar" className="header__avatar" />
    </header>

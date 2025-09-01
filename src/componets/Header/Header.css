@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    
+}
+.header__btn {
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: transparent;
+    border: none;
+}
+
+.header__logo {
+    margin-right: 24px;
+}
+.header__username {
+    margin-right: 20px;
+}
