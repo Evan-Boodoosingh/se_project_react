@@ -1,5 +1,12 @@
+import "./Footer.css";
+
 function Footer() {
-  return <></>;
+  return <div className="footer">
+    <p className="footer__name">Developed by Evan Boodoosingh</p>
+    <p className="footer__year">2025</p>
+  </div>;
 }
+
+
 
 export default Footer;
