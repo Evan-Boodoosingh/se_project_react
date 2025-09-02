@@ -3,6 +3,7 @@
   overflow: hidden;
   border-radius: 12px;
   position: relative;
+  margin-top: 28px;
 }
 
 .weather-card__banner {
@@ -10,16 +11,16 @@
   height: 100%;
   object-fit: cover;
   object-position: right top;
-  ;
 }
 
 .weather-card__temp {
-  color: white;
+  color: #ffffff;
   position: absolute;
   bottom: 20px;
   left: 16px;
   font-size: 36px;
   line-height: 1.1;
   margin: 0;
+  
   /* why is temp 10 px to much */
 }
