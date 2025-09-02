@@ -1,3 +1,9 @@
 why is my temp teen px to much
 
 how do i add default font sizes 
+
+need to make modals
+
+need to deploy to git hub
+
+need to make responsive designe
