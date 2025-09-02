@@ -1,0 +1,34 @@
+.card {
+  width: 325px;
+  height: 328px;
+  border-radius: 20px;
+  position: relative;
+  justify-content: center;
+  display: flex;
+}
+.card__image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: #0000004D 1px solid;
+
+}
+.card__title {
+  position: absolute;
+  top: 15px;
+  /* left: 125px; */
+  margin: 0;
+  border-radius: 4px;
+  background-color: #ffffff;
+  /* height: 24px;
+  width: 73px; */
+  text-align: center;
+  color: #00000099;
+  width: auto;
+  height: auto;
+  padding: 2px 12px;
+  font-size: 16px;
+}
+.main__text{
+    margin: 40px 0 34px;
+}
