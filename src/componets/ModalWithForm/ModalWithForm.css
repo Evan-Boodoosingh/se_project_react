@@ -1,0 +1,9 @@
+.modal {
+  visibility: hidden;
+  width: 400px;
+  height: 400px;
+}
+
+.modal_open {
+  visibility: visible;
+}
