@@ -6,21 +6,22 @@ import AddItemModal from '../AddItemModal/AddItemModal';
 import './App.css';
 
 import { defaultClothingItems } from '../../utils/defaultClothingItems';
-import AddItemModal from '../AddItemModal/AddItemModal';
 function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [activeModal, setActiveModal] = useState("");
 
+const handleCloseAllModals = () => {setActiveModal("")}
+
+const handleAddItemSubmit = () => { console.log("Item Added") }
 
   return (
     <div className='app'>
-      <Header />
+      <Header handleAddClick={() => setActiveModal("create")} />
       <Main clothingItems={clothingItems} />
       <Footer />
     <AddItemModal
-        isOpen={isAddItemModalOpen}
-        onClose={handleCloseAddItemModal}
+        isOpen={activeModal === "create"}
+        onClose={handleCloseAllModals}
         onSubmit={handleAddItemSubmit} />
       </div>
   );

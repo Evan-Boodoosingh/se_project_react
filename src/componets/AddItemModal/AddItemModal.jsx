@@ -1,6 +1,8 @@
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 
-const AddItemModal = ({ isOpen, onClose, onSubmit }) => (
+const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
+  return (
   <ModalWithForm
     title="Add Item"
     name="add-item"
@@ -75,5 +77,6 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => (
     </fieldset>
   </ModalWithForm>
 );
+}
 
 export default AddItemModal;

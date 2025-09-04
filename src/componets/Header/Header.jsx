@@ -2,7 +2,7 @@ import logo from '../../assets/logo.svg';
 import avatar from '../../assets/avatar.svg';
 import './Header.css';
 
-function Header() {
+function Header({ handleAddClick }) {
 const now = new Date();
 const dateStr = now.toLocaleDateString("default", {
   month: "long",
@@ -18,7 +18,7 @@ const dateStr = now.toLocaleDateString("default", {
        </time>
        , New York
      </p>
-     <button className="header__btn">+ Add clothes</button>
+     <button className="header__btn" onClick={handleAddClick}>+ Add clothes</button>
      <p className="header__username">Terrence Tegegne</p>
      <img src={avatar} alt="Avatar" className="header__avatar" />
    </header>
