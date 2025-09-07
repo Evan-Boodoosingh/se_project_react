@@ -22,8 +22,17 @@
   /* Add width, height, background, etc. as needed */
 }
 
+.modal__lable {
+  margin: 0 0 32px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  color: #212121b2;
+  display: block;
+}
+
 .modal__content {
- max-width: 730px;
+  max-width: 730px;
   width: 100%;
   border-radius: 8px;
   background-color: #fff;
@@ -33,7 +42,7 @@
   position: relative;
 }
 
-.modal__close {
+.modal__close-btn {
   position: absolute;
   top: 32px;
   right: 50px;
@@ -45,11 +54,15 @@
   opacity: 40%;
 }
 
-.modal__close:hover {
+.modal__close-img-btn {
+  top: 10px;
+  right: 10px;
+}
+
+.modal__close-btn:hover {
   opacity: 100;
   cursor: pointer;
 }
-
 
 .modal__title {
   margin: 0 0 32px;
@@ -58,19 +71,9 @@
   line-height: 1;
 }
 
-
 .modal__form {
   display: flex;
   flex-direction: column;
-}
-
-.modal__lable {
-  margin: 0 0 32px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.1;
-  color: #212121b2;
-  display: block;
 }
 
 .modal__input {
@@ -91,12 +94,7 @@
   cursor: pointer;
 }
 
-.modal__button:hover {
-  cursor: pointer;
-  background-color: #212121cc;
-}
-
-.modal__button {
+.modal__submit-btn {
   max-width: 156px;
   width: 100%;
   padding: 18px 0;
@@ -107,4 +105,45 @@
   color: #fcf5e5;
   border-radius: 8px;
   border: 1px solid;
+}
+
+.modal__submit-btn_disabled {
+  opacity: 50%;
+}
+
+.modal__submit-btn:hover {
+  cursor: pointer;
+  background-color: #212121cc;
+}
+
+/* .modal__fieldset{
+
+}
+
+.modal__radio{
+
+}
+
+.modal__legend{
+
+}
+
+.modal__radio-group{
+
+} */
+
+.modal__close-btn {
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  opacity: 40%;
+}
+
+.modal__close-btn:hover {
+  opacity: 100;
+  cursor: pointer;
 }

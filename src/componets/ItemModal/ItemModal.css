@@ -1,0 +1,25 @@
+.modal__caption{
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  width: fit-content;
+  background-color: #212121;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin: 8px 0 0;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.modal__image{
+    
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
