@@ -12,6 +12,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
+  const [weatherData, setWeatherData] = useState({namwe: "", temp: "0"});
 
   const handleCloseAllModals = () => {
     setActiveModal("");
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
    getWeatherData()
    .then((data) => {
-    console.log(data);
+    setWeatherData(data);
    })
    .catch(console);
   }, []);
@@ -40,9 +41,10 @@ function App() {
   return (
     <div className="app">
       <Header
+        weatherData={weatherData}
         handleAddClick={() => setActiveModal("create")}
       />
-      <Main clothingItems={clothingItems} onViewItem={handleViewItem} />
+      <Main clothingItems={clothingItems} onViewItem={handleViewItem} weatherData={weatherData} />
       <Footer />
       <AddItemModal
         isOpen={activeModal === "create"} //true
