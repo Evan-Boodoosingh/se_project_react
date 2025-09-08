@@ -1,4 +1,4 @@
-.modal__caption{
+.modal__caption {
   color: #2f2f2f;
   font-weight: 500;
   font-size: 20px;
@@ -13,31 +13,24 @@
   text-overflow: ellipsis;
 }
 
-
-
-.modal__image{
-    
+.modal__image {
   max-width: 498px;
   max-height: 498px;
   width: 100%;
   object-fit: contain;
   display: block;
   border-radius: 16px 16px 0 0;
-
 }
 
-.modal__image-container{
-width: 498px;
-height: 610px;
-background-color: #ffffff;
- border-radius: 16px;
-position: relative;
+.modal__image-container {
+  width: 498px;
+  height: 610px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  position: relative;
 }
 
-
-
-
-.modal__close-img-btn{
+.modal__close-img-btn {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -45,6 +38,4 @@ position: relative;
   height: 20px;
   width: 20px;
   background-image: url(../../assets/union.svg);
-  
 }
-

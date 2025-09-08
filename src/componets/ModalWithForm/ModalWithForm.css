@@ -35,7 +35,6 @@
   padding: 0;
 }
 
-
 .modal__close-btn:hover {
   cursor: pointer;
 }
@@ -45,7 +44,6 @@
   color: #212121;
   font-size: 16px;
   line-height: 20px;
-
 }
 
 .modal__content {
@@ -59,15 +57,12 @@
   position: relative;
 }
 
-
-
 .modal__title {
   margin: 0;
-font-weight: 700;
-font-style: Bold;
-font-size: 16px;
-line-height: 20px;
-
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .modal__form {
@@ -85,11 +80,9 @@ line-height: 20px;
   line-height: 1;
   border: none;
   border-bottom: 1px solid #000000;
-  ;
 }
 
 .modal__input:hover {
-
   cursor: pointer;
 }
 
@@ -110,7 +103,6 @@ line-height: 20px;
 }
 
 .modal__submit-btn:hover {
-
   cursor: pointer;
 }
 
@@ -151,31 +143,27 @@ line-height: 20px;
   cursor: pointer;
 }
 
-.modal__fieldset{
+.modal__fieldset {
   border: none;
   margin: 20px 0 0;
   padding: 0;
 }
 
-.modal__radio-group{
+.modal__radio-group {
   gap: 8px;
   margin: 12px 0 0;
   display: flex;
   flex-direction: column;
-  
 }
 
-
-.modal__radio{
-margin-right: 5px;
-color: #000000;
-width: 10px;
-height: 10px;
-
+.modal__radio {
+  margin-right: 5px;
+  color: #000000;
+  width: 10px;
+  height: 10px;
 }
 
-.modal__legend{
-font-size: 16px;
-line-height: 20px;
-
+.modal__legend {
+  font-size: 16px;
+  line-height: 20px;
 }
