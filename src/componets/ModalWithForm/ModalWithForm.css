@@ -32,6 +32,7 @@
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
+  padding: 0;
 }
 
 
@@ -48,7 +49,7 @@
 }
 
 .modal__content {
-  max-width: 730px;
+  max-width: 496px;
   width: 100%;
   border-radius: 20px;
   background-color: #fff;
@@ -61,7 +62,7 @@
 
 
 .modal__title {
-  margin: 0 0 32px;
+  margin: 0;
 font-weight: 700;
 font-style: Bold;
 font-size: 16px;
