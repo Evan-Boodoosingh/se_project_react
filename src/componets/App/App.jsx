@@ -6,6 +6,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import "./App.css";
 import ItemModal from "../ItemModal/ItemModal";
 import { defaultClothingItems } from "../../utils/defaultClothingItems";
+import { getWeatherData } from "../../utils/weatherApi";
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -24,6 +25,14 @@ function App() {
     setSelectedItem(item);
     setActiveModal("view");
   };
+
+  useEffect(() => {
+   getWeatherData()
+   .then((data) => {
+    console.log(data);
+   })
+   .catch(console);
+  }, []);
 
   useEffect(() => {
     setClothingItems(defaultClothingItems);
