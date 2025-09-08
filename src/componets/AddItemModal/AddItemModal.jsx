@@ -1,15 +1,16 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 
+
 const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
   return (
   <ModalWithForm
-    title="Add Item"
+    title="New Garment"
     name="add-item"
     isOpen={isOpen}
     onClose={onClose}
     onSubmit={onSubmit}
-    buttonText="Add Item"
+    buttonText="Add garment"
   >
     <label className="modal__label">
       Name
@@ -18,6 +19,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
         className="modal__input"
         name="item-name"
         id="clothing-name"
+        placeholder="Name"
         minLength="1"
         maxLength="30"
         required
@@ -30,7 +32,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
         className="modal__input"
         name="imageUrl"
         id="clothing-image"
-        placeholder="Image Url"
+        placeholder="Image URL"
         required
       />
     </label>
@@ -46,7 +48,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
             required
           />
            <label className="modal__label">
-          Warm
+          Hot
         </label>
         </div>
        <div>
@@ -70,7 +72,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
             required
           />
            <label className="modal__label">
-          Warm
+          Cold
         </label>
         </div>
       </div>

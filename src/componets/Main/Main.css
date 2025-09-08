@@ -9,6 +9,10 @@
   list-style: none;
 }
 
+.card__image:hover {
+  cursor: pointer;
+}
+
 .main__text {
   font-size: 20px;
   line-height: 100%;
