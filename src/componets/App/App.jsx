@@ -13,7 +13,8 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
-  const [weatherData, setWeatherData] = useState({namwe: "", temp: "0"});
+  const [weatherData, setWeatherData] = useState({name: "", temp: "0"});
+  const [currentTempUnit, setCurrentTempUnit] = useState("F");
 
   const handleCloseAllModals = () => {
     setActiveModal("");
@@ -28,6 +29,15 @@ function App() {
     setActiveModal("view");
   };
 
+
+  function handleTempUnitChange() {
+    if (currentTempUnit === "F") {
+        setCurrentTempUnit("C");
+    } else {
+        setCurrentTempUnit("F");
+    }
+}
+
   useEffect(() => {
    getWeatherData()
    .then((data) => {
@@ -40,7 +50,7 @@ function App() {
     setClothingItems(defaultClothingItems);
   }, []);
   return (
-    <CurrentTemperatureUnitContext.Provider value={"currentTempUnit"}>
+    <CurrentTemperatureUnitContext.Provider value={{ currentTempUnit, setCurrentTempUnit }}>
     <div className="app">
       <Header
         weatherData={weatherData}
