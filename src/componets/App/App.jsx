@@ -7,6 +7,7 @@ import "./App.css";
 import ItemModal from "../ItemModal/ItemModal";
 import { defaultClothingItems } from "../../utils/defaultClothingItems";
 import { getWeatherData } from "../../utils/weatherApi";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -39,6 +40,7 @@ function App() {
     setClothingItems(defaultClothingItems);
   }, []);
   return (
+    <CurrentTemperatureUnitContext.Provider value={"currentTempUnit"}>
     <div className="app">
       <Header
         weatherData={weatherData}
@@ -57,6 +59,7 @@ function App() {
         isOpen={activeModal === "view"}
       />
     </div>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
