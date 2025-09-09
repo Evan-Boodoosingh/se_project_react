@@ -50,7 +50,7 @@ function App() {
     setClothingItems(defaultClothingItems);
   }, []);
   return (
-    <CurrentTemperatureUnitContext.Provider value={{ currentTempUnit, setCurrentTempUnit }}>
+    <CurrentTemperatureUnitContext.Provider value={{ currentTempUnit, handleTempUnitChange }}>
     <div className="app">
       <Header
         weatherData={weatherData}
