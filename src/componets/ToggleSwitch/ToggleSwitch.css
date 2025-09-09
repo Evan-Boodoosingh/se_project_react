@@ -29,6 +29,7 @@
 
 .toggle-switch__checkbox:checked + .toggle-switch__circle {
   left: 26px; 
+
 }
 .toggle-switch__checkbox:checked:hover + .toggle-switch__circle {
   left: 24px; 
@@ -56,4 +57,23 @@
   line-height: 1;
   color: #7e7e7e;
   font-weight: 700;
+}
+
+/* .toggle-switch__checkbox:checked ~ .toggle-switch__value_left {
+  color: #ffffff;
+} */
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__value_right {
+  color: #ffffff;
+}
+
+.toggle-switch__value_left {
+  font-size: 14px;
+  line-height: 1;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__value_left {
+  color: #7e7e7e;
 }
