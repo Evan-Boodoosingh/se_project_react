@@ -15,10 +15,10 @@ export function getWeatherData() {
 
 
 function parseWeatherData(data) {
-    const parsedData = {};
+    const parsedData = { temp: {}};
 
     parsedData.city = data.name;
-    parsedData.temp = Math.round(data.main.temp);
+    parsedData.temp.F = Math.round(data.main.temp);
 
     return parsedData;
 }

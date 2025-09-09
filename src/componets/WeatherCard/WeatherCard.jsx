@@ -3,16 +3,22 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import banner from "../../assets/banner.svg";
 import "./WeatherCard.css";
 
-
-
 function WeatherCard({ weatherData }) {
-
   const tempUnit = useContext(CurrentTemperatureUnitContext);
 
-  return <section className="weather-card">
-    <img src={banner} alt="Weather Banner" className="weather-card__banner" />
-    <p className="weather-card__temp">{weatherData.temp}° {tempUnit.currentTempUnit}</p>
-  </section>;
+  // Convert F to C if needed
+  const tempF = weatherData.temp.F;
+  const tempC = Math.round(((tempF - 32) * 5) / 9);
+  const displayTemp = tempUnit.currentTempUnit === "C" ? tempC : tempF;
+
+  return (
+    <section className="weather-card">
+      <img src={banner} alt="Weather Banner" className="weather-card__banner" />
+      <p className="weather-card__temp">
+        {displayTemp}° {tempUnit.currentTempUnit}
+      </p>
+    </section>
+  );
 }
 
 export default WeatherCard;
