@@ -1,4 +1,4 @@
-import "../ItemModal/ItemModal.css";
+import "./ItemModal.css";
 
 const ItemModal = ({ selectedItem, isOpen, onClose }) => (
   <div className={`modal ${isOpen ? "modal_open" : ""}`}>
