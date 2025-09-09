@@ -8,8 +8,8 @@ const ItemModal = ({ selectedItem, isOpen, onClose }) => (
         onClick={onClose}
       ></button>
       <img src={selectedItem.link} className="modal__image" />
-      <h2 className="modal__caption"> {selectedItem.name}</h2>
-      <p className="modal__caption" style={{textTransform: 'capitalize'}}>Weather: {selectedItem.weather}</p>
+      <h2 className="modal__caption modal__caption-top"> {selectedItem.name}</h2>
+      <p className="modal__caption modal-caption-bottom" style={{textTransform: 'capitalize'}}>Weather: {selectedItem.weather}</p>
     </div>
   </div>
 );
