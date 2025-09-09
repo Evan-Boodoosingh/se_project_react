@@ -9,6 +9,7 @@ const ItemModal = ({ selectedItem, isOpen, onClose }) => (
       ></button>
       <img src={selectedItem.link} className="modal__image" />
       <h2 className="modal__caption"> {selectedItem.name}</h2>
+      <p className="modal__caption" style={{textTransform: 'capitalize'}}> It feels {selectedItem.weather} outside</p>
     </div>
   </div>
 );

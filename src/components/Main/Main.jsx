@@ -10,14 +10,14 @@ function Main({ clothingItems, onViewItem, weatherData }) {
 
   // Convert F to C if needed
   const tempF = weatherData.temp.F;
-  const tempC = Math.round(((tempF - 32) * 5) / 9);
-  const displayTemp = currentTempUnit === "C" ? tempC : tempF;
+  const tempC = weatherData.temp.C
+  const displayTemp = currentTempUnit === "C" ? weatherData.temp.C : weatherData.temp.F;
 
   const weatherType = getWeatherCondition(tempF);
 
   // Filter items based on weather condition
   const filteredItems = clothingItems.filter(
-    (item) => item.weather && item.weather.toLowerCase() === weatherType
+    (item) => item.weather && item.weather.toLowerCase() === weatherData.condition
   );
 
   return (
@@ -33,6 +33,7 @@ function Main({ clothingItems, onViewItem, weatherData }) {
               key={item._id}
               data={item}
               onClick={() => onViewItem(item)}
+              // onViewItem={onViewItem}
             />
           );
         })}
