@@ -19,6 +19,7 @@ function parseWeatherData(data) {
 
     parsedData.city = data.name;
     parsedData.temp.F = Math.round(data.main.temp);
+    parsedData.temp.C = Math.round((data.main.temp - 32) * 5 / 9);
 
     return parsedData;
 }
