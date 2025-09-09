@@ -13,9 +13,25 @@
   z-index: 0;
 }
 
+.toggle-switch:hover {
+  cursor: pointer;
+  border-color: #000000;
+}
+
 .toggle-switch__checkbox {
   visibility: hidden;
   position: absolute;
+}
+
+.toggle-switch__checkbox:hover + .toggle-switch__circle {
+  left: 0px;
+}
+
+.toggle-switch__checkbox:checked + .toggle-switch__circle {
+  left: 26px; /* or whatever value moves it to the "C" side */
+}
+.toggle-switch__checkbox:checked:hover + .toggle-switch__circle {
+  left: 24px; /* Move 2px to the left from the checked position */
 }
 
 .toggle-switch__circle {
@@ -27,7 +43,13 @@
   border-radius: 50%;
   background-color: #000000;
   z-index: -1;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* .toggle-switch__circle:hover {
+  cursor: pointer;
+  left: 0px;
+} */
 
 .toggle-switch__value {
   font-size: 14px;
