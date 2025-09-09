@@ -13,7 +13,7 @@ function Main({ clothingItems, onViewItem, weatherData }) {
   const tempC = weatherData.temp.C
   const displayTemp = currentTempUnit === "C" ? weatherData.temp.C : weatherData.temp.F;
 
-  const weatherType = getWeatherCondition(tempF);
+  // const weatherType = getWeatherCondition(tempF);
 
   // Filter items based on weather condition
   const filteredItems = clothingItems.filter(
