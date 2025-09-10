@@ -22,6 +22,7 @@ function parseWeatherData(data) {
   parsedData.temp.F = Math.round(data.main.temp);
   parsedData.temp.C = Math.round(((data.main.temp - 32) * 5) / 9);
   parsedData.condition = getWeatherCondition(parsedData.temp.F)
+  parsedData.getWeatherCondition = data.weather[0].main.toLowerCase();
 
   return parsedData;
 }

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import banner from "../../assets/banner.svg";
+import { weatherConditionsImages } from "../../utils/constants";
 import "./WeatherCard.css";
 
 function WeatherCard({ weatherData }) {
@@ -13,7 +14,11 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <img src={banner} alt="Weather Banner" className="weather-card__banner" />
+      <img
+        src={weatherConditionsImages["day"][weatherData.getWeatherCondition]?.image}
+        alt={weatherData.getWeatherCondition}
+        className="weather-card__banner"
+      />
       <p className="weather-card__temp">
         {displayTemp}° {tempUnit.currentTempUnit}
       </p>
