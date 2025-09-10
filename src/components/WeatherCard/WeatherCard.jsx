@@ -20,7 +20,7 @@ function WeatherCard({ weatherData }) {
       <img
         src={
           weatherConditionsImages[timeOfDay][weatherData.WeatherCondition]
-            ?.image
+            ?.image || weatherConditionsImages[timeOfDay]["default"]?.image
         }
         alt={weatherData.WeatherCondition}
         className="weather-card__banner"

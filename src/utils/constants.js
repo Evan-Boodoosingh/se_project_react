@@ -3,6 +3,11 @@ const apiKey = "b3db5741dc986cd3ff31d13a579692b1";
 
 const weatherConditionsImages = {
   day: {
+
+    default: {
+      name: "default",
+      image: new URL("../assets/day/default.png", import.meta.url).href,
+    },
     clear: {
       name: "clear",
       image: new URL("../assets/day/clear.png", import.meta.url).href,
@@ -29,6 +34,10 @@ const weatherConditionsImages = {
     },
   },
   night: {
+    default: {
+      name: "default",
+      image: new URL("../assets/night/default.png", import.meta.url).href,
+    },
     clear: {
       name: "clear",
       image: new URL("../assets/night/clear.png", import.meta.url).href,
