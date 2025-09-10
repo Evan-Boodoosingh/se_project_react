@@ -22,6 +22,7 @@ function parseWeatherData(data) {
   parsedData.temp.C = Math.round(((data.main.temp - 32) * 5) / 9);
   parsedData.condition = getWeatherCondition(parsedData.temp.F);
   parsedData.WeatherCondition = data.weather[0].main.toLowerCase();
+  parsedData.isDay = isDay(data.sys, Date.now());
 
   return parsedData;
 }
@@ -36,6 +37,7 @@ export function getWeatherCondition(temperature) {
   }
 }
 
-function isDay(sunrise, sunset, timeStamp) {
-  return sunrise < timeStamp && timeStamp < sunset;
+function isDay({ sunrise, sunset }, timeStamp) {
+  const timeStampInSeconds = timeStamp / 1000;
+  return sunrise < timeStampInSeconds && timeStampInSeconds < sunset;
 }

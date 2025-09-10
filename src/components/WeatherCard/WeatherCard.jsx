@@ -12,10 +12,16 @@ function WeatherCard({ weatherData }) {
   const tempC = Math.round(((tempF - 32) * 5) / 9);
   const displayTemp = tempUnit.currentTempUnit === "C" ? tempC : tempF;
 
+  // Use the parsed isDay data from weatherApi
+  const timeOfDay = weatherData.isDay ? "day" : "night";
+
   return (
     <section className="weather-card">
       <img
-        src={weatherConditionsImages["day"][weatherData.WeatherCondition]?.image}
+        src={
+          weatherConditionsImages[timeOfDay][weatherData.WeatherCondition]
+            ?.image
+        }
         alt={weatherData.WeatherCondition}
         className="weather-card__banner"
       />
