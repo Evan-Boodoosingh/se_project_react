@@ -15,8 +15,8 @@ function WeatherCard({ weatherData }) {
   return (
     <section className="weather-card">
       <img
-        src={weatherConditionsImages["day"][weatherData.getWeatherCondition]?.image}
-        alt={weatherData.getWeatherCondition}
+        src={weatherConditionsImages["day"][weatherData.WeatherCondition]?.image}
+        alt={weatherData.WeatherCondition}
         className="weather-card__banner"
       />
       <p className="weather-card__temp">

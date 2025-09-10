@@ -15,14 +15,13 @@ export function getWeatherData() {
 }
 
 function parseWeatherData(data) {
-
   const parsedData = { temp: {} };
 
   parsedData.city = data.name;
   parsedData.temp.F = Math.round(data.main.temp);
   parsedData.temp.C = Math.round(((data.main.temp - 32) * 5) / 9);
-  parsedData.condition = getWeatherCondition(parsedData.temp.F)
-  parsedData.getWeatherCondition = data.weather[0].main.toLowerCase();
+  parsedData.condition = getWeatherCondition(parsedData.temp.F);
+  parsedData.WeatherCondition = data.weather[0].main.toLowerCase();
 
   return parsedData;
 }
@@ -37,3 +36,6 @@ export function getWeatherCondition(temperature) {
   }
 }
 
+function isDay(sunrise, sunset, timeStamp) {
+  return sunrise < timeStamp && timeStamp < sunset;
+}
