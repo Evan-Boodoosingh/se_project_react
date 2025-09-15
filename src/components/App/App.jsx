@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-// import Profile from "../Profile/Profile";
+import Profile from "../Profile/Profile";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -72,7 +72,7 @@ function App() {
           ></Route>
           <Route
             path="/profile"
-            element={<div>profile</div>}
+            element={<Profile />}
           ></Route>
         </Routes>
         <Footer />
