@@ -9,6 +9,7 @@
 .header__side {
   display: flex;
   align-items: center;
+ 
 }
 
 .header__btn {
@@ -30,6 +31,7 @@
   margin-right: 24px;
   height: 40px;
   width: 89px;
+  
 }
 .header__username {
   margin: 0;
@@ -52,3 +54,8 @@ line-height: 100%;
   align-items: flex-end;
 }
 
+.header__link {
+  display: flex;
+  align-items: center;
+ 
+}
