@@ -4,11 +4,11 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
 
-function Profile() {
+function Profile({ clothingItems }) {
   return (
     <main className="profile">
       <SideBar />
-      <ClothesSection />
+      <ClothesSection clothingItems={clothingItems} />
     </main>
   );
 }
