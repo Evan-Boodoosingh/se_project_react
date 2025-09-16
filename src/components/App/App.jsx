@@ -72,7 +72,7 @@ function App() {
           ></Route>
           <Route
             path="/profile"
-            element={<Profile  clothingItems={clothingItems} />}
+            element={<Profile  clothingItems={clothingItems} onViewItem={handleViewItem}  handleAddClick={() => setActiveModal("create")} />}
           ></Route>
         </Routes>
         <Footer />
