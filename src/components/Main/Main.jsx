@@ -5,7 +5,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { getWeatherCondition } from "../../utils/weatherApi";
 
-function Main({ clothingItems, onViewItem, weatherData, handleAddClick }) {
+function Main({ clothingItems, onViewItem, weatherData }) {
   const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
 
   // Convert F to C if needed

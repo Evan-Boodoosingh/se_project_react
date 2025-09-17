@@ -10,6 +10,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import { defaultClothingItems } from "../../utils/defaultClothingItems";
 import { getWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import api from "../../utils/api";
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -22,8 +23,15 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemSubmit = () => {
-    console.log("Item Added");
+  const handleAddItemSubmit = (item, resetForm) => {
+    api
+      .addClothingItem(item)
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        handleCloseAllModals();
+        resetForm();
+      })
+      .catch(console.error);
   };
 
   const handleViewItem = (item) => {
@@ -72,8 +80,15 @@ function App() {
           ></Route>
           <Route
             path="/profile"
-            element={<Profile  clothingItems={clothingItems} onViewItem={handleViewItem}  handleAddClick={() => setActiveModal("create")} />}
+            element={
+              <Profile
+                clothingItems={clothingItems}
+                onViewItem={handleViewItem}
+                handleAddClick={() => setActiveModal("create")}
+              />
+            }
           ></Route>
+          ``{" "}
         </Routes>
         <Footer />
         <AddItemModal
