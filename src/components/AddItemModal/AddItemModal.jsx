@@ -36,6 +36,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
           minLength="1"
           maxLength="30"
           onChange={handleChange}
+          value={values.name}
           required
         />
       </label>
@@ -48,6 +49,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
           id="clothing-image"
           placeholder="Image URL"
           onChange={handleChange}
+          value={values.imageUrl}
           required
         />
       </label>
@@ -60,6 +62,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               className="modal__radio"
               name="weather"
               value="hot"
+              checked={values.weather==="hot"}
               onChange={handleChange}
               required
             />
@@ -72,6 +75,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               name="weather"
               value="warm"
               onChange={handleChange}
+              checked={values.weather==="warm"}
               required
             />
             <label className="modal__label">Warm</label>
@@ -83,6 +87,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               name="weather"
               value="cold"
               onChange={handleChange}
+              checked={values.weather==="cold"}
               required
             />
             <label className="modal__label">Cold</label>
