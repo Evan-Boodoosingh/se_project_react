@@ -81,7 +81,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               type="radio"
               className="modal__radio"
               name="weather"
-              value="rainy"
+              value="cold"
               onChange={handleChange}
               required
             />
