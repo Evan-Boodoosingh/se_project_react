@@ -56,7 +56,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setClothingItems(defaultClothingItems);
+    api.getClothingItems()
+    .then((items) => {
+    setClothingItems(items);
+    })
   }, []);
   return (
     <CurrentTemperatureUnitContext.Provider

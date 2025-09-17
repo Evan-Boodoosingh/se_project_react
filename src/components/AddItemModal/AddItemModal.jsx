@@ -5,7 +5,7 @@ import useForm from "../../hooks/useForm";
 const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
   const defaultValues = {
     name: "",
-    link: "",
+    imageUrl: "",
     weather: "",
   };
   const { values, handleChange, resetForm } = useForm(defaultValues);
