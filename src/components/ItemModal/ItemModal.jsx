@@ -7,7 +7,7 @@ const ItemModal = ({ selectedItem, isOpen, onClose }) => (
         className="modal__close-btn modal__close-img-btn"
         onClick={onClose}
       ></button>
-      <img src={selectedItem.link} className="modal__image" />
+      <img src={selectedItem.imageUrl} className="modal__image" />
       <h2 className="modal__caption modal__caption-top"> {selectedItem.name}</h2>
       <p className="modal__caption modal-caption-bottom" style={{textTransform: 'capitalize'}}>Weather: {selectedItem.weather}</p>
     </div>
