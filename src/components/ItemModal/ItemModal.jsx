@@ -8,8 +8,22 @@ const ItemModal = ({ selectedItem, isOpen, onClose }) => (
         onClick={onClose}
       ></button>
       <img src={selectedItem.imageUrl} className="modal__image" />
-      <h2 className="modal__caption modal__caption-top"> {selectedItem.name}</h2>
-      <p className="modal__caption modal-caption-bottom" style={{textTransform: 'capitalize'}}>Weather: {selectedItem.weather}</p>
+      <div className="modal__outer">
+        {" "}
+        <div className="modal__container-top">
+          <h2 className="modal__caption modal__caption-top">
+            {" "}
+            {selectedItem.name}
+          </h2>
+          <button className="modal__delete-btn">Delete item</button>
+        </div>
+        <p
+          className="modal__caption modal-caption-bottom"
+          style={{ textTransform: "capitalize" }}
+        >
+          Weather: {selectedItem.weather}
+        </p>
+      </div>
     </div>
   </div>
 );
