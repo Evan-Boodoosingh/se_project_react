@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import "./App.css";
 import ItemModal from "../ItemModal/ItemModal";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import { defaultClothingItems } from "../../utils/defaultClothingItems";
 import { getWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -18,6 +19,7 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [weatherData, setWeatherData] = useState({ name: "", temp: "0" });
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [deleteItem, setDeleteItem] = useState(null);
 
   const handleCloseAllModals = () => {
     setActiveModal("");
@@ -39,6 +41,24 @@ function App() {
     setActiveModal("view");
   };
 
+  const openDeleteModal = (item) => {
+    setActiveModal("delete");
+    setDeleteItem(item);
+  };
+
+  const handleDelete = () => {
+    api
+      .deleteClothingItem(deleteItem._id)
+      .then(() => {
+        setClothingItems((cards) =>
+          cards.filter((item) => item._id !== deleteItem._id)
+        );
+        setDeleteItem(null);
+        handleCloseAllModals();
+      })
+      .catch(console.error);
+  };
+
   function handleTempUnitChange() {
     if (currentTempUnit === "F") {
       setCurrentTempUnit("C");
@@ -56,10 +76,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    api.getClothingItems()
-    .then((items) => {
-    setClothingItems(items);
-    })
+    api.getClothingItems().then((items) => {
+      setClothingItems(items);
+    });
   }, []);
   return (
     <CurrentTemperatureUnitContext.Provider
@@ -103,6 +122,12 @@ function App() {
           selectedItem={selectedItem || {}}
           onClose={handleCloseAllModals}
           isOpen={activeModal === "view"}
+          onDeleteClick={openDeleteModal}
+        />
+        <DeleteModal
+          isOpen={activeModal === "delete"}
+          onClose={handleCloseAllModals}
+          handleDelete={handleDelete}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
