@@ -1,10 +1,69 @@
 .delete-modal__close-img-btn {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
   padding: 0;
   height: 20px;
   width: 20px;
-  background-image: url(../../assets/union.svg);
-  
+  background-image: url(../../assets/grey.svg);
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.delete-modal__close-btn:hover{
+  cursor: pointer;
+}
+
+.delete-modal__delete-container {
+  width: 670px;
+  height: 280px;
+  background-color: #ffffff;
+  border: 1px;
+  border-radius: 20px;
+  position: relative;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.delete-modal_container-inner {
+  padding: 60px 150px;
+}
+
+.delete-modal__caption {
+  margin: 0;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.delete-modal__button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-modal__btn-delete {
+  margin: 0 auto;
+  margin-bottom: 24px;
+  background-color: transparent;
+  border: none;
+  color: #ff4d00;
+  padding: 0;
+  width: fit-content;
+}
+
+.delete-modal__btn-delete:hover{
+  cursor: pointer;
+}
+
+.delete-modal__btn-cancel {
+  background-color: transparent;
+  border: none;
+  max-width: auto;
+  padding: 0;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.delete-modal__btn-cancel:hover{
+  cursor: pointer;
 }
