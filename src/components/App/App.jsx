@@ -24,10 +24,45 @@ function App() {
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [deleteItem, setDeleteItem] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("jwt") || null);
 
   const handleCloseAllModals = () => {
     setActiveModal("");
+  };
+
+  // Token validation function
+  const handleTokenCheck = () => {
+    const token = localStorage.getItem("jwt");
+
+    if (!token) {
+      return; // No token found, user stays logged out
+    }
+
+    auth
+      .checkToken(token)
+      .then((user) => {
+        // Token is valid, log user in
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        setToken(token);
+      })
+      .catch((err) => {
+        // Token is invalid, remove it and keep user logged out
+        console.error("Token validation failed:", err);
+        localStorage.removeItem("jwt");
+        setToken(null);
+        setCurrentUser(null);
+        setIsLoggedIn(false);
+      });
+  };
+
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    setToken(null);
   };
 
   const handleRegisterSubmit = (userData, resetForm) => {
@@ -39,12 +74,36 @@ function App() {
         userData.password
       )
       .then((newUser) => {
-        // Handle successful registration (e.g., show a success message)
-        console.log("User registered:", newUser);
+        console.log("User registered successfully:", newUser);
+
+        // Automatically log in the user after successful registration
+        return auth.loginUser(userData.email, userData.password);
+      })
+      .then((loginData) => {
+        if (loginData.token) {
+          localStorage.setItem("jwt", loginData.token);
+          setToken(loginData.token);
+
+          // After storing token, check it to get user data
+          return auth.checkToken(loginData.token);
+        }
+      })
+      .then((user) => {
+        if (user) {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+          console.log("User automatically logged in after registration");
+          resetForm();
+          handleCloseAllModals();
+        }
+      })
+      .catch((error) => {
+        console.error("Registration or auto-login failed:", error);
+        // If registration succeeded but login failed, still close modal
+        // The user can manually log in
         resetForm();
         handleCloseAllModals();
-      })
-      .catch(console.error);
+      });
   };
 
   const handleLoginSubmit = (userData, resetForm) => {
@@ -54,10 +113,18 @@ function App() {
         if (data.token) {
           localStorage.setItem("jwt", data.token);
           setToken(data.token);
+
+          // After storing token, check it to get user data
+          return auth.checkToken(data.token);
+        }
+      })
+      .then((user) => {
+        if (user) {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
           console.log("User logged in successfully");
           resetForm();
           handleCloseAllModals();
-          // Optionally fetch user data here
         }
       })
       .catch((error) => {
@@ -66,8 +133,14 @@ function App() {
   };
 
   const handleAddItemSubmit = (item, resetForm) => {
+    // Check if user is authenticated before making protected request
+    if (!token) {
+      console.log("User must be logged in to add items");
+      return;
+    }
+
     api
-      .addClothingItem(item)
+      .addClothingItem(item, token)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         handleCloseAllModals();
@@ -87,14 +160,37 @@ function App() {
   };
 
   const handleDelete = () => {
+    // Check if user is authenticated before making protected request
+    if (!token) {
+      console.log("User must be logged in to delete items");
+      return;
+    }
+
     api
-      .deleteClothingItem(deleteItem._id)
+      .deleteClothingItem(deleteItem._id, token)
       .then(() => {
         setClothingItems((cards) =>
           cards.filter((item) => item._id !== deleteItem._id)
         );
         setDeleteItem(null);
         handleCloseAllModals();
+      })
+      .catch(console.error);
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    // Check if user is authenticated before making protected request
+    if (!token) {
+      console.log("User must be logged in to like items");
+      return;
+    }
+
+    const action = isLiked ? api.unlikeItem : api.likeItem;
+    action(id, token)
+      .then((updatedItem) => {
+        setClothingItems((items) =>
+          items.map((item) => (item._id === id ? updatedItem : item))
+        );
       })
       .catch(console.error);
   };
@@ -106,6 +202,11 @@ function App() {
       setCurrentTempUnit("F");
     }
   }
+
+  // Check token on app load
+  useEffect(() => {
+    handleTokenCheck();
+  }, []); // Empty dependency array = runs once on component mount
 
   useEffect(() => {
     getWeatherData()
