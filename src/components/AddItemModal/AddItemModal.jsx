@@ -15,6 +15,12 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
     onSubmit(values, resetForm);
   }
 
+  // Check if all required fields are filled
+  const isFormValid =
+    values.name.trim() !== "" &&
+    values.imageUrl.trim() !== "" &&
+    values.weather !== "";
+
   return (
     <ModalWithForm
       title="New Garment"
@@ -22,8 +28,8 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      
       buttonText="Add garment"
+      isButtonDisabled={!isFormValid}
     >
       <label className="modal__label">
         Name
@@ -62,7 +68,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               className="modal__radio"
               name="weather"
               value="hot"
-              checked={values.weather==="hot"}
+              checked={values.weather === "hot"}
               onChange={handleChange}
               required
             />
@@ -75,7 +81,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               name="weather"
               value="warm"
               onChange={handleChange}
-              checked={values.weather==="warm"}
+              checked={values.weather === "warm"}
               required
             />
             <label className="modal__label">Warm</label>
@@ -87,7 +93,7 @@ const AddItemModal = ({ isOpen, onClose, onSubmit }) => {
               name="weather"
               value="cold"
               onChange={handleChange}
-              checked={values.weather==="cold"}
+              checked={values.weather === "cold"}
               required
             />
             <label className="modal__label">Cold</label>

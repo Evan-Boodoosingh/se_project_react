@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 import useForm from "../../hooks/useForm";
 
-const LogInModal = ({ isOpen, onClose, onSubmit }) => {
+const LogInModal = ({ isOpen, onClose, onSubmit, errorMessage }) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -18,6 +18,10 @@ const LogInModal = ({ isOpen, onClose, onSubmit }) => {
     onSubmit(userData, resetForm);
   }
 
+  // Check if all required fields are filled
+  const isFormValid =
+    values.email.trim() !== "" && values.password.trim() !== "";
+
   return (
     <ModalWithForm
       title="Log In"
@@ -26,6 +30,8 @@ const LogInModal = ({ isOpen, onClose, onSubmit }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
       buttonText="Log In"
+      isButtonDisabled={!isFormValid}
+      customButtons={true}
     >
       <label className="modal__label">
         Email
@@ -53,11 +59,25 @@ const LogInModal = ({ isOpen, onClose, onSubmit }) => {
           required
         />
       </label>
-      <button className="signup_btn">or Sign Up</button>
+      {errorMessage && (
+        <div className="modal__error-message">{errorMessage}</div>
+      )}
+      <div className="modal__button-container">
+        <button
+          type="submit"
+          className={`modal__submit-btn ${
+            !isFormValid ? "modal__submit-btn_disabled" : ""
+          }`}
+          disabled={!isFormValid}
+        >
+          Log In
+        </button>
+        <button type="button" className="modal__signup-btn">
+          or Sign Up
+        </button>
+      </div>
     </ModalWithForm>
   );
 };
 
 export default LogInModal;
-
-  
