@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -18,6 +18,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LogInModal";
 
 function App() {
+  const navigate = useNavigate();
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -65,6 +66,8 @@ function App() {
     setCurrentUser(null);
     setIsLoggedIn(false);
     setToken(null);
+    // Redirect user to home page after logout
+    navigate("/");
   };
 
   const handleRegisterSubmit = (userData, resetForm) => {
@@ -256,6 +259,7 @@ function App() {
                   clothingItems={clothingItems}
                   onViewItem={handleViewItem}
                   handleAddClick={() => setActiveModal("create")}
+                  onLogout={handleLogout}
                 />
               }
             ></Route>

@@ -1,10 +1,8 @@
-.clothes-section {
-}
 .clothes-section__row {
   display: flex;
   flex-direction: row;
   gap: 20px;
- margin-top: 18px;
+  margin-top: 18px;
   /* text-align: center; */
   align-items: center;
   margin-bottom: 16px;
@@ -12,22 +10,32 @@
   line-height: 1;
 }
 .clothes-section__btn {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    color: #00000099;
-
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: #00000099;
 }
 .clothes-section__btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .clothes-section__card-list {
-   display: flex;
+  display: flex;
   flex-wrap: wrap;
   gap: 20px;
   padding: 0;
   margin: 0;
   list-style: none;
- 
+}
+
+.clothes-section__empty-message {
+  margin: 20px 0;
+  padding: 40px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
 }
