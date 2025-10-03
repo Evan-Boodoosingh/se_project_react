@@ -16,6 +16,7 @@ import api from "../../utils/api";
 import auth from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LogInModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 function App() {
   const navigate = useNavigate();
@@ -29,9 +30,12 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("jwt") || null);
   const [loginError, setLoginError] = useState("");
+  const [profileError, setProfileError] = useState("");
 
   const handleCloseAllModals = () => {
     setActiveModal("");
+    setLoginError(""); // Clear login errors when closing modals
+    setProfileError(""); // Clear profile errors when closing modals
   };
 
   // Token validation function
@@ -136,6 +140,27 @@ function App() {
       .catch((error) => {
         console.error("Login failed:", error);
         setLoginError("Email or password incorrect");
+      });
+  };
+
+  const handleEditProfileSubmit = (userData, resetForm) => {
+    if (!token) {
+      console.log("User must be logged in to edit profile");
+      return;
+    }
+
+    setProfileError(""); // Clear any previous errors
+    api
+      .updateUser(userData, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        console.log("Profile updated successfully");
+        resetForm();
+        handleCloseAllModals();
+      })
+      .catch((error) => {
+        console.error("Profile update failed:", error);
+        setProfileError("Failed to update profile. Please try again.");
       });
   };
 
@@ -260,6 +285,7 @@ function App() {
                   onViewItem={handleViewItem}
                   handleAddClick={() => setActiveModal("create")}
                   onLogout={handleLogout}
+                  onEditProfile={() => setActiveModal("edit-profile")}
                 />
               }
             ></Route>
@@ -292,6 +318,12 @@ function App() {
             onClose={handleCloseAllModals}
             onSubmit={handleLoginSubmit}
             errorMessage={loginError}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={handleCloseAllModals}
+            onSubmit={handleEditProfileSubmit}
+            errorMessage={profileError}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

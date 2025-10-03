@@ -66,6 +66,18 @@ const getUserInfo = (token) => {
   }).then(checkResponse);
 };
 
+// Protected route - requires token
+const updateUser = ({ name, avatar }, token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+};
+
 const api = {
   getClothingItems,
   addClothingItem,
@@ -73,5 +85,6 @@ const api = {
   likeItem,
   unlikeItem,
   getUserInfo,
+  updateUser,
 };
 export default api;

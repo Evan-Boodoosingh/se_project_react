@@ -3,10 +3,16 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 
 import "./Profile.css";
 
-function Profile({ clothingItems, onViewItem, handleAddClick, onLogout }) {
+function Profile({
+  clothingItems,
+  onViewItem,
+  handleAddClick,
+  onLogout,
+  onEditProfile,
+}) {
   return (
     <main className="profile">
-      <SideBar onLogout={onLogout} />
+      <SideBar onLogout={onLogout} onEditProfile={onEditProfile} />
       <ClothesSection
         clothingItems={clothingItems}
         onViewItem={onViewItem}

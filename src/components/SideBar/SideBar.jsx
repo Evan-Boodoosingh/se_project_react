@@ -3,7 +3,7 @@ import "./SideBar.css";
 import avatar from "../../assets/avatar.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function SideBar({ onLogout }) {
+function SideBar({ onLogout, onEditProfile }) {
   const currentUser = useContext(CurrentUserContext);
 
   // Avatar display logic (similar to Header)
@@ -39,6 +39,9 @@ function SideBar({ onLogout }) {
         <p className="sidebar__username">{currentUser?.name || "User"}</p>
         {renderUserAvatar()}
       </div>
+      <button className="sidebar__edit-btn" onClick={onEditProfile}>
+        Edit profile
+      </button>
       <button className="sidebar__logout-btn" onClick={onLogout}>
         Sign out
       </button>
