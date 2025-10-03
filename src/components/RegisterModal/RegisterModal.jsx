@@ -22,6 +22,13 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
     onSubmit(userData, resetForm);
   }
 
+  // Check if all required fields are filled
+  const isFormValid =
+    values.name.trim() !== "" &&
+    values.avatar.trim() !== "" &&
+    values.email.trim() !== "" &&
+    values.password.trim() !== "";
+
   return (
     <ModalWithForm
       title="Sign Up"
@@ -29,8 +36,9 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      
       buttonText="Sign Up"
+      isButtonDisabled={!isFormValid}
+      customButtons={true}
     >
       <label className="modal__label">
         Email
@@ -73,7 +81,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
           required
         />
       </label>
-       <label className="modal__label">
+      <label className="modal__label">
         Avatar URL
         <input
           type="text"
@@ -86,6 +94,20 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
           required
         />
       </label>
+       <div className="modal__button-container">
+        <button
+          type="submit"
+          className={`modal__submit-btn ${
+            !isFormValid ? "modal__submit-btn_disabled" : ""
+          }`}
+          disabled={!isFormValid}
+        >
+            Sign up
+        </button>
+        <button type="button" className="modal__signup-btn">
+          or Log in
+        </button>
+      </div>
     </ModalWithForm>
   );
 };
