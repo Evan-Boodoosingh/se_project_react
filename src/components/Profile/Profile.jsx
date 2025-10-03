@@ -3,12 +3,15 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 
 import "./Profile.css";
 
-
-function Profile({ clothingItems, onViewItem, handleAddClick }) {
+function Profile({ clothingItems, onViewItem, handleAddClick, onLogout }) {
   return (
     <main className="profile">
-      <SideBar />
-      <ClothesSection clothingItems={clothingItems} onViewItem={onViewItem} handleAddClick={handleAddClick}/>
+      <SideBar onLogout={onLogout} />
+      <ClothesSection
+        clothingItems={clothingItems}
+        onViewItem={onViewItem}
+        handleAddClick={handleAddClick}
+      />
     </main>
   );
 }
