@@ -12,6 +12,9 @@ import { defaultClothingItems } from "../../utils/defaultClothingItems";
 import { getWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import api from "../../utils/api";
+import auth from "../../utils/auth";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LogInModal";
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -20,9 +23,46 @@ function App() {
   const [weatherData, setWeatherData] = useState({ name: "", temp: "0" });
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
   const [deleteItem, setDeleteItem] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("jwt") || null);
 
   const handleCloseAllModals = () => {
     setActiveModal("");
+  };
+
+  const handleRegisterSubmit = (userData, resetForm) => {
+    auth
+      .registerUser(
+        userData.name,
+        userData.avatar,
+        userData.email,
+        userData.password
+      )
+      .then((newUser) => {
+        // Handle successful registration (e.g., show a success message)
+        console.log("User registered:", newUser);
+        resetForm();
+        handleCloseAllModals();
+      })
+      .catch(console.error);
+  };
+
+  const handleLoginSubmit = (userData, resetForm) => {
+    auth
+      .loginUser(userData.email, userData.password)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("jwt", data.token);
+          setToken(data.token);
+          console.log("User logged in successfully");
+          resetForm();
+          handleCloseAllModals();
+          // Optionally fetch user data here
+        }
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
   };
 
   const handleAddItemSubmit = (item, resetForm) => {
@@ -88,6 +128,8 @@ function App() {
         <Header
           weatherData={weatherData}
           handleAddClick={() => setActiveModal("create")}
+          handleRegisterClick={() => setActiveModal("register")}
+          handleLoginClick={() => setActiveModal("login")}
         />
         <Routes>
           <Route
@@ -128,6 +170,16 @@ function App() {
           isOpen={activeModal === "delete"}
           onClose={handleCloseAllModals}
           handleDelete={handleDelete}
+        />
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          onClose={handleCloseAllModals}
+          onSubmit={handleRegisterSubmit}
+        />
+        <LoginModal
+          isOpen={activeModal === "login"}
+          onClose={handleCloseAllModals}
+          onSubmit={handleLoginSubmit}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
