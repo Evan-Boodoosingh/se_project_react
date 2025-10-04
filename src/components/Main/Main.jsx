@@ -5,7 +5,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { getWeatherCondition } from "../../utils/weatherApi";
 
-function Main({ clothingItems, onViewItem, weatherData }) {
+function Main({ clothingItems, onViewItem, onLike, currentUser, weatherData }) {
   const { currentTempUnit } = useContext(CurrentTemperatureUnitContext);
 
   // Convert F to C if needed
@@ -33,7 +33,8 @@ function Main({ clothingItems, onViewItem, weatherData }) {
               key={item._id}
               data={item}
               onClick={() => onViewItem(item)}
-              // onViewItem={onViewItem}
+              onLike={onLike}
+              currentUser={currentUser}
             />
           );
         })}

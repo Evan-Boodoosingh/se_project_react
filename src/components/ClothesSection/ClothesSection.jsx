@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ClothesSection({ clothingItems, onViewItem, handleAddClick }) {
-  const currentUser = useContext(CurrentUserContext);
-
+function ClothesSection({ clothingItems, onViewItem, onLike, currentUser, handleAddClick }) {
   // Don't render anything if no current user (shouldn't happen on profile page)
   if (!currentUser) {
     return null;
@@ -33,6 +30,8 @@ function ClothesSection({ clothingItems, onViewItem, handleAddClick }) {
                 key={item._id}
                 data={item}
                 onClick={() => onViewItem(item)}
+                onLike={onLike}
+                currentUser={currentUser}
               />
             );
           })}

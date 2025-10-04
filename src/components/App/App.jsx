@@ -17,6 +17,7 @@ import auth from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LogInModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const navigate = useNavigate();
@@ -273,6 +274,8 @@ function App() {
                 <Main
                   clothingItems={clothingItems}
                   onViewItem={handleViewItem}
+                  onLike={handleCardLike}
+                  currentUser={currentUser}
                   weatherData={weatherData}
                 />
               }
@@ -280,13 +283,17 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onViewItem={handleViewItem}
-                  handleAddClick={() => setActiveModal("create")}
-                  onLogout={handleLogout}
-                  onEditProfile={() => setActiveModal("edit-profile")}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItems={clothingItems}
+                    onViewItem={handleViewItem}
+                    onLike={handleCardLike}
+                    currentUser={currentUser}
+                    handleAddClick={() => setActiveModal("create")}
+                    onLogout={handleLogout}
+                    onEditProfile={() => setActiveModal("edit-profile")}
+                  />
+                </ProtectedRoute>
               }
             ></Route>
             ``{" "}

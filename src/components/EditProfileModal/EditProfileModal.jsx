@@ -80,6 +80,7 @@ const EditProfileModal = ({ isOpen, onClose, onSubmit, errorMessage }) => {
           required
         />
       </label>
+      
     </ModalWithForm>
   );
 };

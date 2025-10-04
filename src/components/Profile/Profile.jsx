@@ -6,6 +6,8 @@ import "./Profile.css";
 function Profile({
   clothingItems,
   onViewItem,
+  onLike,
+  currentUser,
   handleAddClick,
   onLogout,
   onEditProfile,
@@ -16,6 +18,8 @@ function Profile({
       <ClothesSection
         clothingItems={clothingItems}
         onViewItem={onViewItem}
+        onLike={onLike}
+        currentUser={currentUser}
         handleAddClick={handleAddClick}
       />
     </main>
