@@ -10,14 +10,16 @@ function Main({ clothingItems, onViewItem, onLike, currentUser, weatherData }) {
 
   // Convert F to C if needed
   const tempF = weatherData.temp.F;
-  const tempC = weatherData.temp.C
-  const displayTemp = currentTempUnit === "C" ? weatherData.temp.C : weatherData.temp.F;
+  const tempC = weatherData.temp.C;
+  const displayTemp =
+    currentTempUnit === "C" ? weatherData.temp.C : weatherData.temp.F;
 
   // const weatherType = getWeatherCondition(tempF);
 
   // Filter items based on weather condition
   const filteredItems = clothingItems.filter(
-    (item) => item.weather && item.weather.toLowerCase() === weatherData.condition
+    (item) =>
+      item.weather && item.weather.toLowerCase() === weatherData.condition
   );
 
   return (

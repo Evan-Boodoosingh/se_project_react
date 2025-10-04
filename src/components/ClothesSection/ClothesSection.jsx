@@ -2,7 +2,13 @@ import React from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ clothingItems, onViewItem, onLike, currentUser, handleAddClick }) {
+function ClothesSection({
+  clothingItems,
+  onViewItem,
+  onLike,
+  currentUser,
+  handleAddClick,
+}) {
   // Don't render anything if no current user (shouldn't happen on profile page)
   if (!currentUser) {
     return null;
