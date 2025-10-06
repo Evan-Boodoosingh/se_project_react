@@ -55,6 +55,11 @@
   background-image: url(../../assets/union.svg);
 }
 
+.modal__close-img-btn:hover {
+  cursor: pointer;
+  background-image: url(../../assets/grey.svg);
+}
+
 .modal__outer {
   padding: 20px 32px 32px;
 }
