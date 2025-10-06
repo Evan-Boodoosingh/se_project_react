@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import greyIcon from "../../assets/grey.svg";
 import "./ItemModal.css";
 
 const ItemModal = ({ onDeleteClick, selectedItem, isOpen, onClose }) => {
+  const currentUser = useContext(CurrentUserContext);
+
   const handleOnDeleteClick = () => {
     onDeleteClick(selectedItem);
   };
@@ -10,7 +15,9 @@ const ItemModal = ({ onDeleteClick, selectedItem, isOpen, onClose }) => {
         <button
           className="modal__close-btn modal__close-img-btn"
           onClick={onClose}
-        ></button>
+        >
+          <img src={greyIcon} alt="Close" className="modal__close-icon" />
+        </button>
         <img src={selectedItem.imageUrl} className="modal__image" />
         <div className="modal__outer">
           {" "}
@@ -19,9 +26,14 @@ const ItemModal = ({ onDeleteClick, selectedItem, isOpen, onClose }) => {
               {" "}
               {selectedItem.name}
             </h2>
-            <button onClick={handleOnDeleteClick} className="modal__delete-btn">
-              Delete item
-            </button>
+            {currentUser && selectedItem.owner === currentUser._id && (
+              <button
+                onClick={handleOnDeleteClick}
+                className="modal__delete-btn"
+              >
+                Delete item
+              </button>
+            )}
           </div>
           <p
             className="modal__caption modal-caption-bottom"

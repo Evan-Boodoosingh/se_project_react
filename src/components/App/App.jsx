@@ -319,11 +319,13 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={handleCloseAllModals}
             onSubmit={handleRegisterSubmit}
+            onSwitchToLogin={() => setActiveModal("login")}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={handleCloseAllModals}
             onSubmit={handleLoginSubmit}
+            onSwitchToRegister={() => setActiveModal("register")}
             errorMessage={loginError}
           />
           <EditProfileModal
