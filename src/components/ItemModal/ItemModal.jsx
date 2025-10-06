@@ -15,8 +15,7 @@ const ItemModal = ({ onDeleteClick, selectedItem, isOpen, onClose }) => {
         <button
           className="modal__close-btn modal__close-img-btn"
           onClick={onClose}
-        >
-        </button>
+        ></button>
         <img src={selectedItem.imageUrl} className="modal__image" />
         <div className="modal__outer">
           {" "}
