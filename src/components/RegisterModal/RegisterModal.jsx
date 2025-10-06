@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 import useForm from "../../hooks/useForm";
 
-const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
+const RegisterModal = ({ isOpen, onClose, onSubmit, onSwitchToLogin }) => {
   const defaultValues = {
     name: "",
     avatar: "",
@@ -94,7 +94,7 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
           required
         />
       </label>
-       <div className="modal__button-container">
+      <div className="modal__button-container">
         <button
           type="submit"
           className={`modal__submit-btn ${
@@ -102,9 +102,13 @@ const RegisterModal = ({ isOpen, onClose, onSubmit }) => {
           }`}
           disabled={!isFormValid}
         >
-            Sign up
+          Sign up
         </button>
-        <button type="button" className="modal__signup-btn">
+        <button
+          type="button"
+          className="modal__signup-btn"
+          onClick={onSwitchToLogin}
+        >
           or Log in
         </button>
       </div>
