@@ -35,10 +35,7 @@ const ItemModal = ({ onDeleteClick, selectedItem, isOpen, onClose }) => {
               </button>
             )}
           </div>
-          <p
-            className="modal__caption modal-caption-bottom"
-            style={{ textTransform: "capitalize" }}
-          >
+          <p className="modal__caption modal-caption-bottom">
             Weather: {selectedItem.weather}
           </p>
         </div>

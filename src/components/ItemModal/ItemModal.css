@@ -25,6 +25,7 @@
 
 .modal-caption-bottom{
   margin-top: 12px;
+  text-transform: capitalize;
 }
 
 .modal__image {
