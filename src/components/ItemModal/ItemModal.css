@@ -14,7 +14,7 @@
   /* margin-left: 32px; */
 }
 
-.modal__caption-top{
+.modal__caption-top {
   /* margin-top: 20px;
   margin-bottom: 12px; */
 }
@@ -23,7 +23,7 @@
   margin-top: 12px;
 } */
 
-.modal-caption-bottom{
+.modal-caption-bottom {
   margin-top: 12px;
   text-transform: capitalize;
 }
@@ -53,30 +53,27 @@
   height: 20px;
   width: 20px;
   background-image: url(../../assets/union.svg);
-  
 }
 
-.modal__outer{
-padding: 20px 32px 32px;
+.modal__outer {
+  padding: 20px 32px 32px;
 }
 
-.modal__container-top{
+.modal__container-top {
   display: flex;
   justify-content: space-between;
-  
 }
 
-.modal__delete-btn{
+.modal__delete-btn {
   /* margin-right: 32px; */
   background-color: transparent;
   border: none;
   font-size: 20px;
   line-height: 24px;
   padding: 0;
-  color: #FF4D00;
-
+  color: #ff4d00;
 }
 
-.modal__delete-btn:hover{
+.modal__delete-btn:hover {
   cursor: pointer;
 }

@@ -87,30 +87,15 @@ function App() {
         console.log("User registered successfully:", newUser);
 
         // Automatically log in the user after successful registration
-        return auth.loginUser(userData.email, userData.password);
-      })
-      .then((loginData) => {
-        if (loginData.token) {
-          localStorage.setItem("jwt", loginData.token);
-          setToken(loginData.token);
-
-          // After storing token, check it to get user data
-          return auth.checkToken(loginData.token);
-        }
-      })
-      .then((user) => {
-        if (user) {
-          setCurrentUser(user);
-          setIsLoggedIn(true);
-          console.log("User automatically logged in after registration");
-          resetForm();
-          handleCloseAllModals();
-        }
+        // Reuse the existing login handler
+        const loginData = {
+          email: userData.email,
+          password: userData.password,
+        };
+        handleLoginSubmit(loginData, resetForm);
       })
       .catch((error) => {
-        console.error("Registration or auto-login failed:", error);
-        // If registration succeeded but login failed, still close modal
-        // The user can manually log in
+        console.error("Registration failed:", error);
         resetForm();
         handleCloseAllModals();
       });

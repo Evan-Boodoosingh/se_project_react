@@ -2,7 +2,13 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 import useForm from "../../hooks/useForm";
 
-const LogInModal = ({ isOpen, onClose, onSubmit, onSwitchToRegister, errorMessage }) => {
+const LogInModal = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  onSwitchToRegister,
+  errorMessage,
+}) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -72,7 +78,11 @@ const LogInModal = ({ isOpen, onClose, onSubmit, onSwitchToRegister, errorMessag
         >
           Log In
         </button>
-        <button type="button" className="modal__signup-btn" onClick={onSwitchToRegister}>
+        <button
+          type="button"
+          className="modal__signup-btn"
+          onClick={onSwitchToRegister}
+        >
           or Sign Up
         </button>
       </div>
