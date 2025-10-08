@@ -9,7 +9,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "json-server": "json-server --watch db.json --id _id --port 3001",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "npm run build &&  scp -r ./dist/* evan9496@what2wear.blinklab.com:/home/evan9496/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",
