@@ -2,6 +2,13 @@
 
 A responsive, full-stack weather-based clothing recommendation app built with React frontend and Express backend. Users can register accounts, log in securely, view weather-appropriate clothing suggestions, add new items to their personal wardrobe, like items, and manage their clothing collection based on current weather conditions.
 
+## 🌐 Live Deployment
+
+- **Main Website**: https://what2wear.blinklab.com
+- **API Backend**: https://api.what2wear.blinklab.com
+- **Hosting**: Google Cloud Platform with nginx reverse proxy
+- **SSL**: Fully secured with HTTPS
+
 ## 🔗 Related Repositories
 
 - **Backend API**: [se_project_express](https://github.com/Evan-Boodoosingh/se_project_express.git) - Express.js backend with MongoDB
@@ -27,14 +34,14 @@ A responsive, full-stack weather-based clothing recommendation app built with Re
 ### 👔 Clothing Management
 
 - **Personal Wardrobe**: Add, view, and delete your own clothing items
-- **Like System**: Like/unlike clothing items with persistent state
+- **Like System**: Like/unlike clothing items with persistent state ✨ *Sprint 14*
 - **User-Specific Content**: Profile page shows only your clothing items
 - **Real-time Updates**: Instant UI updates for all interactions
 
 ### 👤 Profile Management
 
 - **User Profile**: Dedicated profile page with avatar and user info
-- **Edit Profile**: Update name and avatar URL
+- **Edit Profile**: Update name and avatar URL ✨ *Sprint 14*
 - **Profile Sidebar**: User information display with edit/logout options
 
 ### 🎨 UI/UX Features
@@ -44,6 +51,33 @@ A responsive, full-stack weather-based clothing recommendation app built with Re
 - **Error Handling**: User-friendly error messages for login/registration
 - **Loading States**: Visual feedback during API operations
 - **Modal System**: Intuitive modals for all user interactions
+
+## ✨ Latest Updates (Sprint 14)
+
+### New Features Implemented
+- **❤️ Like/Unlike System**: Users can now like clothing items with persistent state
+  - Visual toggle between filled and outline heart icons
+  - Like counts persist between sessions
+  - Real-time UI updates across all components
+  
+- **👤 Profile Editing**: Complete profile management system
+  - Edit user name and avatar URL through dedicated modal
+  - Form validation with real-time feedback
+  - Instant profile updates across the application
+
+- **🔧 Enhanced Backend Security**:
+  - Environment variable configuration with dotenv
+  - Centralized error handling with custom error classes
+  - Comprehensive request validation using Joi and Celebrate
+  - Winston-based logging for requests and errors
+  - Production-ready deployment configuration
+
+- **🌐 Production Deployment**:
+  - Full deployment on Google Cloud Platform
+  - Nginx reverse proxy configuration
+  - PM2 process management with auto-restart
+  - HTTPS with SSL certificates
+  - Environment-specific API endpoints
 
 ## 🛠️ Tech Stack
 
@@ -69,17 +103,68 @@ A responsive, full-stack weather-based clothing recommendation app built with Re
 - **Weather**: OpenWeatherMap Weather API
 - **Image Storage**: External image hosting (user-provided URLs)
 
+## ⚙️ Environment Configuration
+
+The application automatically switches between development and production environments:
+
+### Development Environment
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+- **Build Tool**: Vite with hot module replacement
+- **Environment**: `NODE_ENV` is automatically set to "development"
+
+### Production Environment
+- **Frontend**: https://what2wear.blinklab.com
+- **Backend API**: https://api.what2wear.blinklab.com
+- **Build Tool**: Vite production build with optimization
+- **Environment**: `NODE_ENV` is automatically set to "production" during build
+
+### Environment-Specific API Configuration
+
+The app automatically uses the correct API endpoints based on the environment:
+
+```javascript
+// In src/utils/api.js
+export const BASE_URL = process.env.NODE_ENV === "production" 
+  ? "https://api.what2wear.blinklab.com" 
+  : "http://localhost:3001";
+```
+
+This ensures seamless switching between local development and production deployment.
+
+## 🚀 Deployment
+
+### Build Process
+```bash
+npm run build    # Creates optimized production build in /dist
+```
+
+### Production Deployment
+The application uses a custom deployment script:
+```bash
+npm run deploy   # Builds and uploads to production server
+```
+
+### Manual Deployment
+```bash
+# Build the application
+npm run build
+
+# Upload to server (replace with your server details)
+scp -r ./dist/* user@server:/path/to/frontend
+```
+
 ## Available Scripts
 
 - `npm run dev` - Start development server with hot reload
 - `npm run build` - Build production bundle
 - `npm run preview` - Preview production build locally
-- `npm run json-server` - Start JSON Server API on port 3001
+- `npm run deploy` - Build and deploy to production server
 - `npm run lint` - Run ESLint code quality checks
 
 ## 🌐 API Documentation
 
-### Base URL: `http://localhost:3001`
+### Development: `http://localhost:3001` | Production: `https://api.what2wear.blinklab.com`
 
 ### Backend Repository: [se_project_express](https://github.com/Evan-Boodoosingh/se_project_express.git)
 
