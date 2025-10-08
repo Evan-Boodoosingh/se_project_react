@@ -34,14 +34,14 @@ A responsive, full-stack weather-based clothing recommendation app built with Re
 ### 👔 Clothing Management
 
 - **Personal Wardrobe**: Add, view, and delete your own clothing items
-- **Like System**: Like/unlike clothing items with persistent state ✨ *Sprint 14*
+- **Like System**: Like/unlike clothing items with persistent state ✨ _Sprint 14_
 - **User-Specific Content**: Profile page shows only your clothing items
 - **Real-time Updates**: Instant UI updates for all interactions
 
 ### 👤 Profile Management
 
 - **User Profile**: Dedicated profile page with avatar and user info
-- **Edit Profile**: Update name and avatar URL ✨ *Sprint 14*
+- **Edit Profile**: Update name and avatar URL ✨ _Sprint 14_
 - **Profile Sidebar**: User information display with edit/logout options
 
 ### 🎨 UI/UX Features
@@ -55,17 +55,19 @@ A responsive, full-stack weather-based clothing recommendation app built with Re
 ## ✨ Latest Updates (Sprint 14)
 
 ### New Features Implemented
+
 - **❤️ Like/Unlike System**: Users can now like clothing items with persistent state
   - Visual toggle between filled and outline heart icons
   - Like counts persist between sessions
   - Real-time UI updates across all components
-  
 - **👤 Profile Editing**: Complete profile management system
+
   - Edit user name and avatar URL through dedicated modal
   - Form validation with real-time feedback
   - Instant profile updates across the application
 
 - **🔧 Enhanced Backend Security**:
+
   - Environment variable configuration with dotenv
   - Centralized error handling with custom error classes
   - Comprehensive request validation using Joi and Celebrate
@@ -108,12 +110,14 @@ A responsive, full-stack weather-based clothing recommendation app built with Re
 The application automatically switches between development and production environments:
 
 ### Development Environment
+
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:3001
 - **Build Tool**: Vite with hot module replacement
 - **Environment**: `NODE_ENV` is automatically set to "development"
 
 ### Production Environment
+
 - **Frontend**: https://what2wear.blinklab.com
 - **Backend API**: https://api.what2wear.blinklab.com
 - **Build Tool**: Vite production build with optimization
@@ -125,9 +129,10 @@ The app automatically uses the correct API endpoints based on the environment:
 
 ```javascript
 // In src/utils/api.js
-export const BASE_URL = process.env.NODE_ENV === "production" 
-  ? "https://api.what2wear.blinklab.com" 
-  : "http://localhost:3001";
+export const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.what2wear.blinklab.com"
+    : "http://localhost:3001";
 ```
 
 This ensures seamless switching between local development and production deployment.
@@ -135,17 +140,21 @@ This ensures seamless switching between local development and production deploym
 ## 🚀 Deployment
 
 ### Build Process
+
 ```bash
 npm run build    # Creates optimized production build in /dist
 ```
 
 ### Production Deployment
+
 The application uses a custom deployment script:
+
 ```bash
 npm run deploy   # Builds and uploads to production server
 ```
 
 ### Manual Deployment
+
 ```bash
 # Build the application
 npm run build
